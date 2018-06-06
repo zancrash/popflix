@@ -7,8 +7,8 @@ import Slider from './Slider';
 
 class Navigation extends React.Component {
     state = {
-        genre: 'comedy',
-        /*genres: [],*/
+        genre: 'Comedy',
+        genres: [],
         // information for navigation sliders:
         year: {
             label: "year",
@@ -33,10 +33,14 @@ class Navigation extends React.Component {
         }
     }
     
-    //fetch genres from themoviedb:
-    /*componentdidMount() {
+    //fetch genres from themoviedb and store them in the state:
+    componentDidMount() {
         const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
-    }*/
+        fetch(genresURL)
+            .then(response => response.json())
+            .then(data => this.setState({ genres: data.genres }))
+            .catch(error => console.log(error))
+    }
 
     onGenreChange = event => {
         this.setState({ genre: event.target.value });
@@ -56,6 +60,7 @@ class Navigation extends React.Component {
             <section className="navigation">
                 <Selection
                     genre={this.state.genre}
+                    genres={this.state.genres}
                     onGenreChange={this.onGenreChange}
                 />
 

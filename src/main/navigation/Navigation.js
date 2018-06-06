@@ -8,13 +8,14 @@ import Slider from './Slider';
 class Navigation extends React.Component {
     state = {
         genre: 'comedy',
+        /*genres: [],*/
         // information for navigation sliders:
         year: {
             label: "year",
             min: 1990,
             max: 2018,
             step: 1,
-            value: {min: 200, max: 2018}
+            value: {min: 1996, max: 2018}
         },
         rating: {
             label: "rating",
@@ -31,6 +32,11 @@ class Navigation extends React.Component {
             value: {min: 60, max: 120}
         }
     }
+    
+    //fetch genres from themoviedb:
+    /*componentdidMount() {
+        const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+    }*/
 
     onGenreChange = event => {
         this.setState({ genre: event.target.value });

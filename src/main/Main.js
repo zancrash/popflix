@@ -47,12 +47,17 @@ class Main extends React.Component {
         });
     };
 
+    setGenres = genres => {
+        this.setState({genres});
+    }
+
     render() {
         return (
             <section className="main">
                 <Navigation
                     onChange={this.onChange}
                     onGenreChange={this.onGenreChange}
+                    setGenres={this.setGenres}
                     {...this.state}
                 />
                 <Movies />

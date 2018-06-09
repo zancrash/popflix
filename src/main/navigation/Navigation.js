@@ -12,7 +12,7 @@ class Navigation extends React.Component {
         const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
         fetch(genresURL)
             .then(response => response.json())
-            .then(data => this.setState({ genres: data.genres }))
+            .then(data => this.props.setGenres( data.genres ))
             .catch(error => console.log(error))
     }
     

@@ -47,6 +47,7 @@ class Main extends React.Component {
         });
     };
 
+    //this method will store genres and pass it down to the Navigation component.
     setGenres = genres => {
         this.setState({genres});
     }

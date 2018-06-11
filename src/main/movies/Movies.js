@@ -10,15 +10,20 @@ class Movies extends React.Component {
     }
 
     componentDidMount() {
-        const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+        this.fetchMovies(this.props.url);
+    }
 
-        fetch(apiUrl)
+    componentWillReceiveProps(nextProps) {
+        if (this.props.url !== nextProps.url) {
+            this.fetchMovies(nextProps.url);
+        }
+    }
+
+    fetchMovies = (url) => {
+        fetch(url)
             .then(response => response.json()) // the response is the object that carries the data
-            /*.then(data => console.log(data))*/ // the data is then logged
             .then(data => this.storeMovies(data)) // pass the data into the storeMovies method
             .catch(error => console.log(error)) // incase the fetch request was unsuccessful, the error is logged
-        
-            console.log("Before or after data?");
     }
 
     storeMovies = data => {

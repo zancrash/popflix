@@ -8,6 +8,8 @@ import Movies from './movies/Movies';
 class Main extends React.Component {
 
     state = {
+        page: 1,
+        url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
         genre: 'Comedy',
         genres: [],
         // information for navigation sliders:

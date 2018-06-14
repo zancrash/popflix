@@ -8,6 +8,7 @@ import Movies from './movies/Movies';
 class Main extends React.Component {
 
     state = {
+        movies: [],
         page: 1,
         url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
         genre: 'Comedy',
@@ -36,6 +37,46 @@ class Main extends React.Component {
         },
         moviesUrl: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
     }
+
+    componentDidMount() {
+        this.fetchMovies(this.state.moviesUrl);
+    }
+
+    // re-fetch movies when the search button is clicked:
+    componentWillUpdate(nextProps, nextState) {
+        if (this.state.moviesUrl !==  nextState.moviesUrl) {
+            this.fetchMovies(nextState.moviesUrl)
+        }
+    }
+
+    fetchMovies = (url) => {
+        fetch(url)
+            .then(response => response.json()) // the response is the object that carries the data
+            .then(data => this.storeMovies(data)) // pass the data into the storeMovies method
+            .catch(error => console.log(error)) // incase the fetch request was unsuccessful, the error is logged
+    }
+
+    storeMovies = data => {
+        // 'movies' variable assigned to the result of iteration through 'data.results' array:
+        const movies = data.results.map( result => {
+            // destructure every 'result' object and assign its properties to respective variables:
+            const {
+                vote_count,
+                id,
+                genre_ids,
+                poster_path,
+                title,
+                vote_average,
+                release_date
+            } = result;
+            // return the variables as one object:
+            return {vote_count, id, genre_ids, poster_path, title, vote_average, release_date};
+        });
+
+        // store the data in the state:
+        this.setState({ movies })
+    }
+
     
     onGenreChange = event => {
         this.setState({ genre: event.target.value });
@@ -71,7 +112,7 @@ class Main extends React.Component {
             `vote_average.lte=${rating.value.max}&` +
             `with_runtime.gte${runtime.value.min}&` +
             `with_runtime.lte${runtime.value.max}&` +
-            `page=1&`;
+            `page=${page}&`;
         
         this.setState({ moviesUrl });
     }
@@ -91,7 +132,7 @@ class Main extends React.Component {
                     onSearchButtonClick={this.onSearchButtonClick}
                     {...this.state}
                 />
-                <Movies url={this.state.moviesUrl}/>
+                <Movies movies={this.state.movies}/>
             </section>
         )
     }

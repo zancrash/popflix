@@ -74,7 +74,7 @@ class Main extends React.Component {
             return {vote_count, id, genre_ids, poster_path, title, vote_average, release_date};
         });
 
-        // store the data in the state:
+        // store the data (movies and total pages) in the state:
         this.setState({ movies, total_pages: data.total_pages })
     }
 

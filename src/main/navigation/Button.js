@@ -1,12 +1,12 @@
-// SearchButton.js
+// Button.js
 
 import React from 'react';
-import './SearchButton.css';
+import './Button.css';
 
-const SearchButton = ({ onClick }) => (
+const Button = ({ onClick }) => (
     <div className="search-button">
         <button onClick={onClick}>Search</button>
     </div>
 )
 
-export default SearchButton;
+export default Button;

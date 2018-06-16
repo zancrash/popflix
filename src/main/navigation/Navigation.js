@@ -4,7 +4,7 @@ import React from 'react';
 import './Navigation.css';
 import Selection from './Selection';
 import Slider from './Slider';
-import SearchButton from './SearchButton';
+import SearchButton from './Button';
 
 class Navigation extends React.Component {
 

@@ -32,7 +32,9 @@ class Navigation extends React.Component {
                 <Slider data={rating} onChange={onChange} />
                 <Slider data={runtime} onChange={onChange} />
 
-                <Button onClick={onSearchButtonClick}/>
+                <Button onClick={onSearchButtonClick}>
+                    Search
+                </Button>
 
             </section>
         )

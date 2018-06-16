@@ -43,10 +43,13 @@ class Main extends React.Component {
         this.fetchMovies(this.state.moviesUrl);
     }
 
-    // re-fetch movies when the search button is clicked:
+    // re-fetch movies when the search button is clicked and pagination is used:
     componentWillUpdate(nextProps, nextState) {
         if (this.state.moviesUrl !==  nextState.moviesUrl) {
             this.fetchMovies(nextState.moviesUrl)
+        }
+        if (this.state.page !== nextState.page){
+            this.generateUrl();
         }
     }
 
@@ -118,6 +121,7 @@ class Main extends React.Component {
         this.setState({ moviesUrl });
     }
 
+    // update the page value in the state if the next page exists
     onPageIncrease = () => {
         const {page, total_pages} = this.state
         const nextPage = page + 1;
@@ -126,6 +130,7 @@ class Main extends React.Component {
         }
     }
 
+    // update the page value only if it is greater than 0
     onPageDecrease = () => {
         const {page} = this.state
         const nextPage = page -1;

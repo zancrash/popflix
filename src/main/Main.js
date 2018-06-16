@@ -141,6 +141,7 @@ class Main extends React.Component {
 
     // generateUrl method is called when the search button is clicked
     onSearchButtonClick = () => {
+        this.setState({ page: 1 });
         this.generateUrl();
     }
 

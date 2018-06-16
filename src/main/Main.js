@@ -118,6 +118,22 @@ class Main extends React.Component {
         this.setState({ moviesUrl });
     }
 
+    onPageIncrease = () => {
+        const {page, total_pages} = this.state
+        const nextPage = page + 1;
+        if (nextPage <= total_pages) {
+            this.setState({ page: nextPage })
+        }
+    }
+
+    onPageDecrease = () => {
+        const {page} = this.state
+        const nextPage = page -1;
+        if (nextPage > 0) {
+            this.setState({ page: nextPage })
+        }
+    }
+
     // generateUrl method is called when the search button is clicked
     onSearchButtonClick = () => {
         this.generateUrl();

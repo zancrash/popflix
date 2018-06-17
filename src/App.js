@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from './header/Header';
 import Main from './main/Main';
-import Movies from './main/movies/Movies';
+import MoviePage from './main/movies/MoviePage';
 import NotFound from './main/NotFound';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
         <Header />
           <Switch>
             <Route exact path='/' component={Main} />
-            <Route path='/movies/:movieId' component={Movies} />
+            <Route path='/movies/:movieId' component={MoviePage} />
             <Route component={NotFound} />
           </Switch>
       </div>

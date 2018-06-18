@@ -40,11 +40,18 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchMovies(this.state.moviesUrl);
+        const savedState = this.getStateFromLocalStorage();
+        if ( !savedState || (savedState && !savedState.movies.length)) {
+            this.fetchMovies(this.state.moviesUrl);
+        } else {
+            this.setState({ ...savedState });
+            this.generateUrl(savedState);
+        }
     }
 
     // re-fetch movies when the search button is clicked and pagination is used:
     componentWillUpdate(nextProps, nextState) {
+        this.saveStateToLocalStorage();
         if (this.state.moviesUrl !==  nextState.moviesUrl) {
             this.fetchMovies(nextState.moviesUrl)
         }

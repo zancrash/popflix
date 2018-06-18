@@ -145,6 +145,16 @@ class Main extends React.Component {
         this.generateUrl();
     }
 
+    // save application state to local storage:
+    saveStateToLocalStorage = () => {
+        localStorage.setItem('popflix.params', JSON.stringify(this.state));
+    }
+
+    // restore application state from local storage:
+    getStateFromLocalStorage = () => {
+        return JSON.parse(localStorage.getItem('popflix.params'));
+    }
+
     render() {
         return (
             <section className="main">

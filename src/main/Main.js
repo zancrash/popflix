@@ -108,9 +108,9 @@ class Main extends React.Component {
     };
 
     // method to generate a url using information from the state
-    generateUrl = () => {
-        const { genres, year, rating, runtime, page } = this.state;
-        const selectedGenre = genres.find( genre => genre.name === this.state.genre );
+    generateUrl = (params) => {
+        const { genres, year, rating, runtime, page } = params;
+        const selectedGenre = genres.find( genre => genre.name === params.genre );
         const genreId = selectedGenre.id;
 
         const moviesUrl = `https://api.themoviedb.org/3/discover/movie?` +

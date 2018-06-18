@@ -41,9 +41,11 @@ class Main extends React.Component {
 
     componentDidMount() {
         const savedState = this.getStateFromLocalStorage();
+        // if there are no movies in the savedState.movies array, fetch movies:
         if ( !savedState || (savedState && !savedState.movies.length)) {
             this.fetchMovies(this.state.moviesUrl);
-        } else {
+        } // otherwise, save the retrieved data in the state and generate new url based on the retrieved data:
+        else {
             this.setState({ ...savedState });
             this.generateUrl(savedState);
         }

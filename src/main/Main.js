@@ -40,25 +40,16 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        const savedState = this.getStateFromLocalStorage();
-        // if there are no movies in the savedState.movies array, fetch movies:
-        if ( !savedState || (savedState && !savedState.movies.length)) {
-            this.fetchMovies(this.state.moviesUrl);
-        } // otherwise, save the retrieved data in the state and generate new url based on the retrieved data:
-        else {
-            this.setState({ ...savedState });
-            this.generateUrl(savedState);
-        }
+        this.fetchMovies(this.state.moviesUrl);
     }
 
     // re-fetch movies when the search button is clicked and pagination is used:
     componentWillUpdate(nextProps, nextState) {
-        this.saveStateToLocalStorage();
         if (this.state.moviesUrl !==  nextState.moviesUrl) {
             this.fetchMovies(nextState.moviesUrl)
         }
         if (this.state.page !== nextState.page){
-            this.generateUrl(nextState);
+            this.generateUrl();
         }
     }
 
@@ -110,9 +101,9 @@ class Main extends React.Component {
     };
 
     // method to generate a url using information from the state
-    generateUrl = (params) => {
-        const { genres, year, rating, runtime, page } = params;
-        const selectedGenre = genres.find( genre => genre.name === params.genre );
+    generateUrl = () => {
+        const { genres, year, rating, runtime, page } = this.state;
+        const selectedGenre = genres.find( genre => genre.name === this.state.genre );
         const genreId = selectedGenre.id;
 
         const moviesUrl = `https://api.themoviedb.org/3/discover/movie?` +
@@ -151,17 +142,7 @@ class Main extends React.Component {
     // generateUrl method is called when the search button is clicked
     onSearchButtonClick = () => {
         this.setState({ page: 1 });
-        this.generateUrl(this.state);
-    }
-
-    // save application state to local storage:
-    saveStateToLocalStorage = () => {
-        localStorage.setItem('popflix.params', JSON.stringify(this.state));
-    }
-
-    // restore application state from local storage:
-    getStateFromLocalStorage = () => {
-        return JSON.parse(localStorage.getItem('popflix.params'));
+        this.generateUrl();
     }
 
     render() {

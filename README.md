@@ -2,7 +2,7 @@ Requires Node.js
 
 Run npm start in project directory to launch app.
 
-Preview: https://i.imgur.com/7mPFqM4.png
+Preview: https://i.imgur.com/V1ok2pK.png
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

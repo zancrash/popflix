@@ -1,3 +1,10 @@
+Requires Node.js
+
+Run npm start in project directory to launch app.
+
+Preview: https://i.imgur.com/7mPFqM4.png
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

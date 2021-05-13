@@ -5,12 +5,12 @@ import './Navigation.css';
 import Selection from './Selection';
 import Slider from './Slider';
 import Button from './Button';
-
+//${process.env.REACT_APP_TMDB_API_KEY}
 class Navigation extends React.Component {
 
     //fetch genres list from themoviedb and store them in the state:
     componentDidMount() {
-        const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`
+        const genresURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=c981a203656e3838652319f640a7de3f&language=en-US`
         fetch(genresURL)
             .then(response => response.json())
             //pass data.genres as an argument to the setGenres method in the Main component:

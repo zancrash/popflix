@@ -4,15 +4,15 @@ import React from 'react';
 import './Main.css';
 import Navigation from './navigation/Navigation';
 import Movies from './movies/Movies';
-
+//${process.env.REACT_APP_TMDB_API_KEY}
 class Main extends React.Component {
 
     state = {
         movies: [],
         total_pages: 1,
         page: 1,
-        url: `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
-        genre: 'Comedy',
+        url: `https://api.themoviedb.org/3/genre/movie/list?api_key=c981a203656e3838652319f640a7de3f&language=en-US`,
+        genre: 'Action',
         genres: [],
         // information for navigation sliders:
         year: {
@@ -36,7 +36,7 @@ class Main extends React.Component {
             step: 15,
             value: {min: 60, max: 120}
         },
-        moviesUrl: `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
+        moviesUrl: `https://api.themoviedb.org/3/discover/movie?api_key=c981a203656e3838652319f640a7de3f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`
     }
 
     componentDidMount() {
@@ -116,7 +116,7 @@ class Main extends React.Component {
         const genreId = selectedGenre.id;
 
         const moviesUrl = `https://api.themoviedb.org/3/discover/movie?` +
-            `api_key=${process.env.REACT_APP_TMDB_API_KEY}&` +
+            `api_key=c981a203656e3838652319f640a7de3f&` +
             `language=en-US&sort_by=popularity.desc&` +
             `with_genres=${genreId}&` +
             `primary_release_date.gte=${year.value.min}-01-01&` +

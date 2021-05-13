@@ -11,7 +11,7 @@ const App = () => {
       <div>
         <Header />
           <Switch>
-            <Route exact path='/' component={Main} />
+            <Route exact path='/popflix' component={Main} />
             <Route path='/movies/:movieId' component={MoviePage} />
             <Route component={NotFound} />
           </Switch>

@@ -1,7 +1,8 @@
 /* Movie.css */
 
 .movie-page{
-    display: flex;
+    /*display: flex;*/
+    display: block;
     flex-direction: column;
 }
 

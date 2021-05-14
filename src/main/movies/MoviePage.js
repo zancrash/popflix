@@ -3,7 +3,7 @@
 import React from 'react';
 import './MoviePage.css';
 import LoadingMovie from './LoadingMovie';
-
+//${process.env.REACT_APP_TMDB_API_KEY}
 class MoviePage extends React.Component {
     state = {
         isLoading: true,
@@ -13,7 +13,7 @@ class MoviePage extends React.Component {
     componentDidMount() {
         // the match object accesses the route parameter (the part of the route pattern that starts with a colon)
         const {movieId} = this.props.match.params;
-        const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`;
+        const movieUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=c981a203656e3838652319f640a7de3f&language=en-US`;
         fetch(movieUrl)
             .then(response => response.json())
             .then(data => this.setState({ movie: data, isLoading: false }))

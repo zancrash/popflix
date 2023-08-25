@@ -17,10 +17,10 @@ class Main extends React.Component {
         // information for navigation sliders:
         year: {
             label: "year",
-            min: 1990,
-            max: 2021,
+            min: 1980,
+            max: 2023,
             step: 1,
-            value: {min: 1996, max: 2021}
+            value: {min: 1996, max: 2023}
         },
         rating: {
             label: "rating",

@@ -11,8 +11,8 @@ const App = () => {
       <div>
         <Header />
           <Switch>
-            <Route exact path='/' component={Main} />
-            <Route path='/movies/:movieId' component={MoviePage} />
+            <Route exact path='/popflix' component={Main} />
+            <Route path='popflix/movies/:movieId' component={MoviePage} />
             <Route component={NotFound} />
           </Switch>
       </div>

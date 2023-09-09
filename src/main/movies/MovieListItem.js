@@ -10,7 +10,7 @@ const MovieListItem = ({ movie }) => {
 
     return (
         <li className="movie-item">
-            <Link to={`movies/${id}`} className="thumbnail">
+            <Link to={`popflix/movies/${id}`} className="thumbnail">
                 <img src={imgUrl} alt="{title}"/>
                 <div className="movie-description">
                     <h2>{title}</h2>
